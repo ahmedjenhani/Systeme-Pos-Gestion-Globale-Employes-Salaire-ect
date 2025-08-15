@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class ProfileController extends Controller
 {
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(Request $request): View
     {
         return view('profile.index', [
@@ -24,9 +22,7 @@ class ProfileController extends Controller
         ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
+    
     public function changePassword(Request $request): View
     {
         return view('profile.change-password', [
@@ -34,9 +30,7 @@ class ProfileController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function edit(Request $request): View
     {
         return view('profile.edit', [
@@ -44,9 +38,7 @@ class ProfileController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(Request $request): RedirectResponse
     {
         $user = User::find(auth()->user()->id);
@@ -64,9 +56,7 @@ class ProfileController extends Controller
             $validatedData['email_verified_at'] = null;
         }
 
-        /**
-         * Handle upload image with Storage.
-         */
+        
         if ($file = $request->file('photo')) {
             $fileName = hexdec(uniqid()).'.'.$file->getClientOriginalExtension();
             $path = 'public/profile/';
@@ -77,14 +67,12 @@ class ProfileController extends Controller
 
         User::where('id', $user->id)->update($validatedData);
 
-        return Redirect::route('profile')->with('success', 'Profile has been updated!');
+        return Redirect::route('profile')->with('success', 'Profil mis à jour avec succès!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(string $id)
     {
-        //
+        
     }
 }

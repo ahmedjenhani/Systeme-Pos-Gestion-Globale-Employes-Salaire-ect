@@ -11,9 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class PaySalaryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
         $row = (int) request('row', 10);
@@ -36,9 +34,7 @@ class PaySalaryController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    
     public function paySalary(String $id)
     {
         return view('pay-salary.create', [
@@ -79,17 +75,13 @@ class PaySalaryController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    
     public function create()
     {
-        //
+        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(Request $request)
     {
         $rules = [
@@ -109,40 +101,32 @@ class PaySalaryController extends Controller
 
         PaySalary::create($validatedData);
 
-        return Redirect::route('pay-salary.payHistory')->with('success', 'Employee Salary Paid Successfully!');
+        return Redirect::route('pay-salary.payHistory')->with('success', 'Salaire de l\'employé payé avec succès!');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(PaySalary $paySalary)
     {
-        //
+        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function edit(PaySalary $paySalary)
     {
-        //
+        
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(Request $request, PaySalary $paySalary)
     {
-        //
+        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(PaySalary $paySalary)
     {
         PaySalary::destroy($paySalary->id);
 
-        return Redirect::route('pay-salary.payHistory')->with('success', 'Employee History Pay Salary has been deleted!');
+        return Redirect::route('pay-salary.payHistory')->with('success', 'Historique de paiement de salaire supprimé avec succès!');
     }
 }

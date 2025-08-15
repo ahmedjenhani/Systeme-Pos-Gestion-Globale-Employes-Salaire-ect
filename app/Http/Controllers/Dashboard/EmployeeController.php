@@ -11,9 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class EmployeeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
         $row = (int) request('row', 10);
@@ -27,17 +25,13 @@ class EmployeeController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    
     public function create()
     {
         return view('employees.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(Request $request)
     {
         $rules = [
@@ -48,15 +42,13 @@ class EmployeeController extends Controller
             'experience' => 'max:6|nullable',
             'salary' => 'required|numeric',
             'vacation' => 'max:50|nullable',
-            'city' => 'requried|max:50',
+            'city' => 'required|max:50',
             'address' => 'required|max:100',
         ];
 
         $validatedData = $request->validate($rules);
 
-        /**
-         * Handle upload image with Storage.
-         */
+        
         if ($file = $request->file('photo')) {
             $fileName = hexdec(uniqid()).'.'.$file->getClientOriginalExtension();
             $path = 'public/employees/';
@@ -67,12 +59,10 @@ class EmployeeController extends Controller
 
         Employee::create($validatedData);
 
-        return Redirect::route('employees.index')->with('success', 'Employee has been created!');
+        return Redirect::route('employees.index')->with('success', 'Employé créé avec succès!');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(Employee $employee)
     {
         return view('employees.show', [
@@ -80,9 +70,7 @@ class EmployeeController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function edit(Employee $employee)
     {
         return view('employees.edit', [
@@ -90,9 +78,7 @@ class EmployeeController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(Request $request, Employee $employee)
     {
         $rules = [
@@ -109,16 +95,12 @@ class EmployeeController extends Controller
 
         $validatedData = $request->validate($rules);
 
-        /**
-         * Handle upload image with Storage.
-         */
+        
         if ($file = $request->file('photo')) {
             $fileName = hexdec(uniqid()).'.'.$file->getClientOriginalExtension();
             $path = 'public/employees/';
 
-            /**
-             * Delete photo if exists.
-             */
+            
             if($employee->photo){
                 Storage::delete($path . $employee->photo);
             }
@@ -129,23 +111,19 @@ class EmployeeController extends Controller
 
         Employee::where('id', $employee->id)->update($validatedData);
 
-        return Redirect::route('employees.index')->with('success', 'Employee has been updated!');
+        return Redirect::route('employees.index')->with('success', 'Employé mis à jour avec succès!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(Employee $employee)
     {
-        /**
-         * Delete photo if exists.
-         */
+        
         if($employee->photo){
             Storage::delete('public/employees/' . $employee->photo);
         }
 
         Employee::destroy($employee->id);
 
-        return Redirect::route('employees.index')->with('success', 'Employee has been deleted!');
+        return Redirect::route('employees.index')->with('success', 'Employé supprimé avec succès!');
     }
 }

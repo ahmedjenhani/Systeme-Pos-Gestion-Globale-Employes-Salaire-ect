@@ -7,20 +7,20 @@
             @if (session()->has('success'))
                 <div class="alert text-white bg-success" role="alert">
                     <div class="iq-alert-text">{{ session('success') }}</div>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Fermer">
                     <i class="ri-close-line"></i>
                     </button>
                 </div>
             @endif
             <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                 <div>
-                    <h4 class="mb-3">Customer List</h4>
-                    <p class="mb-0">A customer dashboard lets you easily gather and visualize customer data from optimizing <br>
-                        the customer experience, ensuring customer retention. </p>
+                    <h4 class="mb-3">Liste des clients</h4>
+                    <p class="mb-0">Un tableau de bord client vous permet de rassembler et de visualiser facilement les données des clients en optimisant <br>
+                        l'expérience client, en garantissant la fidélisation des clients. </p>
                 </div>
                 <div>
                     <a href="{{ route('customers.create') }}" class="btn btn-primary add-list"><i class="fa-solid fa-plus mr-3"></i>Ajouter client</a>
-                    <a href="{{ route('customers.index') }}" class="btn btn-danger add-list"><i class="fa-solid fa-trash mr-3"></i>Clear Search</a>
+                    <a href="{{ route('customers.index') }}" class="btn btn-danger add-list"><i class="fa-solid fa-trash mr-3"></i>Effacer la recherche</a>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
             <form action="{{ route('customers.index') }}" method="get">
                 <div class="d-flex flex-wrap align-items-center justify-content-between">
                     <div class="form-group row">
-                        <label for="row" class="col-sm-3 align-self-center">Row:</label>
+                        <label for="row" class="col-sm-3 align-self-center">Ligne:</label>
                         <div class="col-sm-9">
                             <select class="form-control" name="row">
                                 <option value="10" @if(request('row') == '10')selected="selected"@endif>10</option>
@@ -44,7 +44,7 @@
                         <label class="control-label col-sm-3 align-self-center" for="search">Chercher:</label>
                         <div class="col-sm-8">
                             <div class="input-group">
-                                <input type="text" id="search" class="form-control" name="search" placeholder="Search customer" value="{{ request('search') }}">
+                                <input type="text" id="search" class="form-control" name="search" placeholder="rechercher un client" value="{{ request('search') }}">
                                 <div class="input-group-append">
                                     <button type="submit" class="input-group-text bg-primary"><i class="fa-solid fa-magnifying-glass font-size-20"></i></button>
                                 </div>
@@ -62,10 +62,10 @@
                         <tr class="ligth ligth-data">
                             <th>Num
                             <th>Photo</th>
-                            <th>@sortablelink('name')</th>
+                            <th>@sortablelink('nom')</th>
                             <th>@sortablelink('email')</th>
-                            <th>@sortablelink('phone')</th>
-                            <th>@sortablelink('shopname')</th>
+                            <th>@sortablelink('téléphone')</th>
+                            <th>@sortablelink('nom_boutique')</th>
                             <th>Action</th>
                         </tr>
                     </thead>

@@ -11,9 +11,7 @@ use Illuminate\Validation\Rules\Password;
 
 class PasswordController extends Controller
 {
-    /**
-     * Update the user's password.
-     */
+    
     public function update(Request $request): RedirectResponse
     {
         $validated = $request->validate([
@@ -25,6 +23,6 @@ class PasswordController extends Controller
             'password' => Hash::make($validated['password']),
         ]);
 
-        return Redirect::route('profile')->with('success', 'Password has been updated!');
+        return Redirect::route('profile')->with('success', 'Le mot de passe a été mis à jour avec succès!');
     }
 }

@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Create Employee Attendence</h4>
+                        <h4 class="card-title">Créer une présence pour l'employé</h4>
                     </div>
                 </div>
 
@@ -38,9 +38,9 @@
                                     <table class="table mb-0">
                                         <thead class="bg-white text-uppercase">
                                             <tr class="ligth ligth-data">
-                                                <th>Num
-                                                <th>Employee</th>
-                                                <th class="text-center">Attendence Status</th>
+                                                <th>Num</th>
+                                                <th>Employé</th>
+                                                <th class="text-center">Statut de présence</th>
                                             </tr>
                                         </thead>
                                         <tbody class="ligth-body">
@@ -61,7 +61,7 @@
                                                             <div class="input-group-text mx-2">
                                                                 <div class="custom-radio">
                                                                     <input type="radio" id="leave{{ $key }}" name="status{{ $key }}" class="custom-control-input position-relative" style="height: 20px" value="leave">
-                                                                    <label class="custom-control-label" for="leave{{ $key }}"> Leave </label>
+                                                                    <label class="custom-control-label" for="leave{{ $key }}"> Congé </label>
                                                                 </div>
                                                             </div>
                                                             <div class="input-group-text">
@@ -82,8 +82,8 @@
                         </div>
                         <!-- end: Input Data -->
                         <div class="mt-2">
-                            <button type="submit" class="btn btn-primary">Save</button>
-                            <a href="{{ route('attendence.index') }}" class="btn btn-danger">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            <a href="{{ route('attendence.index') }}" class="btn btn-danger">Annuler</a>
                         </div>
                     </form>
                 </div>

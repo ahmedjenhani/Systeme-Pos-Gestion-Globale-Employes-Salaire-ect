@@ -20,9 +20,7 @@ use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
         $row = (int) request('row', 10);
@@ -40,9 +38,7 @@ class ProductController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    
     public function create()
     {
         return view('products.create', [
@@ -51,9 +47,7 @@ class ProductController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(Request $request)
     {
         $product_code = IdGenerator::generate([
@@ -78,12 +72,10 @@ class ProductController extends Controller
 
         $validatedData = $request->validate($rules);
 
-        // save product code value
+        
         $validatedData['product_code'] = $product_code;
 
-        /**
-         * Handle upload image with Storage.
-         */
+        
         if ($file = $request->file('product_image')) {
             $fileName = hexdec(uniqid()).'.'.$file->getClientOriginalExtension();
             $path = 'public/products/';
@@ -94,15 +86,13 @@ class ProductController extends Controller
 
         Product::create($validatedData);
 
-        return Redirect::route('products.index')->with('success', 'Product has been created!');
+        return Redirect::route('products.index')->with('success', 'Produit créé avec succès!');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(Product $product)
     {
-        // Barcode Generator
+        
         $generator = new BarcodeGeneratorHTML();
 
         $barcode = $generator->getBarcode($product->product_code, $generator::TYPE_CODE_128);
@@ -113,9 +103,7 @@ class ProductController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function edit(Product $product)
     {
         return view('products.edit', [
@@ -125,9 +113,7 @@ class ProductController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(Request $request, Product $product)
     {
         $rules = [
@@ -145,16 +131,12 @@ class ProductController extends Controller
 
         $validatedData = $request->validate($rules);
 
-        /**
-         * Handle upload image with Storage.
-         */
+        
         if ($file = $request->file('product_image')) {
             $fileName = hexdec(uniqid()).'.'.$file->getClientOriginalExtension();
             $path = 'public/products/';
 
-            /**
-             * Delete photo if exists.
-             */
+            
             if($product->product_image){
                 Storage::delete($path . $product->product_image);
             }
@@ -165,29 +147,23 @@ class ProductController extends Controller
 
         Product::where('id', $product->id)->update($validatedData);
 
-        return Redirect::route('products.index')->with('success', 'Product has been updated!');
+        return Redirect::route('products.index')->with('success', 'Produit mis à jour avec succès!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(Product $product)
     {
-        /**
-         * Delete photo if exists.
-         */
+        
         if($product->product_image){
             Storage::delete('public/products/' . $product->product_image);
         }
 
         Product::destroy($product->id);
 
-        return Redirect::route('products.index')->with('success', 'Product has been deleted!');
+        return Redirect::route('products.index')->with('success', 'Produit supprimé avec succès!');
     }
 
-    /**
-     * Show the form for importing a new resource.
-     */
+    
     public function importView()
     {
         return view('products.import');
@@ -230,10 +206,10 @@ class ProductController extends Controller
             Product::insert($data);
 
         } catch (Exception $e) {
-            // $error_code = $e->errorInfo[1];
-            return Redirect::route('products.index')->with('error', 'There was a problem uploading the data!');
+            
+            return Redirect::route('products.index')->with('error', 'Il y a eu un problème lors du téléchargement des données!');
         }
-        return Redirect::route('products.index')->with('success', 'Data has been successfully imported!');
+        return Redirect::route('products.index')->with('success', 'Les données ont été importées avec succès!');
     }
 
     public function exportExcel($products){
@@ -249,17 +225,14 @@ class ProductController extends Controller
             header('Content-Disposition: attachment;filename="Products_ExportedData.xls"');
             header('Cache-Control: max-age=0');
             ob_end_clean();
-            $Excel_writer->save('php://output');
+            $Excel_writer->save('php:
             exit();
         } catch (Exception $e) {
             return;
         }
     }
 
-    /**
-     *This function loads the customer data from the database then converts it
-     * into an Array that will be exported to Excel
-     */
+    
     function exportData(){
         $products = Product::all()->sortByDesc('product_id');
 

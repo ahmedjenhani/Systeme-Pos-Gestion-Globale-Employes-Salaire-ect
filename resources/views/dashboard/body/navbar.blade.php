@@ -5,13 +5,13 @@
                 <i class="ri-menu-line wrapper-menu"></i>
                 <a href="{{ route('dashboard') }}" class="header-logo">
                     <img src="../assets/images/logo.png" class="img-fluid rounded-normal" alt="logo">
-                    <h5 class="logo-title ml-3">DASHBOARD_INVENTAIRE</h5>
+                    <h5 class="logo-title ml-3">{{ __('Tableau de bord') }}</h5>
                 </a>
             </div>
             <div class="iq-search-bar device-search">
                 <form action="#" class="searchbox">
                     <a class="search-link" href="#"><i class="ri-search-line"></i></a>
-                    <input type="text" class="text search-input" placeholder="chercher ici...">
+                    <input type="text" class="text search-input" placeholder="{{ __('Chercher ici...') }}">
                 </form>
             </div>
             <div class="d-flex align-items-center">
@@ -32,7 +32,7 @@
                                 <form action="#" class="searchbox p-2">
                                     <div class="form-group mb-0 position-relative">
                                         <input type="text" class="text search-input font-size-12"
-                                            placeholder="type here to search...">
+                                            placeholder="{{ __('Chercher ici...') }}">
                                         <a href="#" class="search-link"><i class="las la-search"></i></a>
                                     </div>
                                 </form>
@@ -54,12 +54,12 @@
                                         </div>
                                         <div class="p-3">
                                             <h5 class="mb-1">{{  auth()->user()->name }}</h5>
-                                            <p class="mb-0">Since {{ date('d M, Y', strtotime(auth()->user()->created_at)) }}</p>
+                                            <p class="mb-0">{{ __('Member since') }} {{ date('d M, Y', strtotime(auth()->user()->created_at)) }}</p>
                                             <div class="d-flex align-items-center justify-content-center mt-3">
-                                                <a href="{{ route('profile') }}" class="btn border mr-2">Profil</a>
+                                                <a href="{{ route('profile') }}" class="btn border mr-2">{{ __('Profil') }}</a>
                                                 <form action="{{ route('logout') }}" method="POST">
                                                     @csrf
-                                                    <button type="submit" class="btn border">Quitter</button>
+                                                    <button type="submit" class="btn border">{{ __('Se déconnecter') }}</button>
                                                 </form>
                                             </div>
                                         </div>

@@ -11,9 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class CustomerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
         $row = (int) request('row', 10);
@@ -27,17 +25,13 @@ class CustomerController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    
     public function create()
     {
         return view('customers.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(Request $request)
     {
         $rules = [
@@ -56,9 +50,7 @@ class CustomerController extends Controller
 
         $validatedData = $request->validate($rules);
 
-        /**
-         * Handle upload image with Storage.
-         */
+        
         if ($file = $request->file('photo')) {
             $fileName = hexdec(uniqid()).'.'.$file->getClientOriginalExtension();
             $path = 'public/customers/';
@@ -69,12 +61,10 @@ class CustomerController extends Controller
 
         Customer::create($validatedData);
 
-        return Redirect::route('customers.index')->with('success', 'Customer has been created!');
+        return Redirect::route('customers.index')->with('success', 'Le client a été créé avec succès!');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(Customer $customer)
     {
         return view('customers.show', [
@@ -82,9 +72,7 @@ class CustomerController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function edit(Customer $customer)
     {
         return view('customers.edit', [
@@ -92,9 +80,7 @@ class CustomerController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(Request $request, Customer $customer)
     {
         $rules = [
@@ -113,16 +99,12 @@ class CustomerController extends Controller
 
         $validatedData = $request->validate($rules);
 
-        /**
-         * Handle upload image with Storage.
-         */
+        
         if ($file = $request->file('photo')) {
             $fileName = hexdec(uniqid()).'.'.$file->getClientOriginalExtension();
             $path = 'public/customers/';
 
-            /**
-             * Delete photo if exists.
-             */
+            
             if($customer->photo){
                 Storage::delete($path . $customer->photo);
             }
@@ -133,23 +115,19 @@ class CustomerController extends Controller
 
         Customer::where('id', $customer->id)->update($validatedData);
 
-        return Redirect::route('customers.index')->with('success', 'Customer has been updated!');
+        return Redirect::route('customers.index')->with('success', 'Client mis à jour avec succès!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(Customer $customer)
     {
-        /**
-         * Delete photo if exists.
-         */
+        
         if($customer->photo){
             Storage::delete('public/customers/' . $customer->photo);
         }
 
         Customer::destroy($customer->id);
 
-        return Redirect::route('customers.index')->with('success', 'Customer has been deleted!');
+        return Redirect::route('customers.index')->with('success', 'Client supprimé avec succès!');
     }
 }

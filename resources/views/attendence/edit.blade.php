@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Edit Employee Attendence</h4>
+                        <h4 class="card-title">Modifier la présence de l'employé</h4>
                     </div>
                 </div>
 
@@ -38,9 +38,9 @@
                                     <table class="table mb-0">
                                         <thead class="bg-white text-uppercase">
                                             <tr class="ligth ligth-data">
-                                                <th>Num
-                                                <th>Employee</th>
-                                                <th class="text-center">Attendence Status</th>
+                                                <th>Num</th>
+                                                <th>Employé</th>
+                                                <th class="text-center">Statut de présence</th>
                                             </tr>
                                         </thead>
                                         <tbody class="ligth-body">
@@ -82,8 +82,8 @@
                         </div>
                         <!-- end: Input Data -->
                         <div class="mt-2">
-                            <button type="submit" class="btn btn-primary">Update</button>
-                            <a href="{{ route('attendence.index') }}" class="btn btn-danger">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Mise à jour</button>
+                            <a href="{{ route('attendence.index') }}" class="btn btn-danger">Annuler</a>
                         </div>
                     </form>
                 </div>

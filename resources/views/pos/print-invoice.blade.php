@@ -29,7 +29,7 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <img src="{{ asset('assets/images/logo.png') }}" class="logo-invoice img-fluid mb-3">
-                                    <h5 class="mb-3">Hello, {{ $customer->name }}</h5>
+                                    <h5 class="mb-3">Bonjour, {{ $customer->name }}</h5>
                                 </div>
                             </div>
                             <div class="row">
@@ -38,21 +38,21 @@
                                         <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">Order Date</th>
-                                                    <th scope="col">Order Status</th>
-                                                    <th scope="col">Invoice No</th>
-                                                    <th scope="col">Billing Address</th>
+                                                    <th scope="col">Date de commande</th>
+                                                    <th scope="col">Statut de la commande</th>
+                                                    <th scope="col">Numéro de facture</th>
+                                                    <th scope="col">Adresse de facturation</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
                                                     <td>Jan 17, 2016</td>
-                                                    <td><span class="badge badge-danger">Unpaid</span></td>
+                                                    <td><span class="badge badge-danger">non rémunéré</span></td>
                                                     <td>250028</td>
                                                     <td>
                                                         <p class="mb-0">{{ $customer->address }}<br>
-                                                            Shop Name: {{ $customer->shopname ? $customer->shopname : '-' }}<br>
-                                                            Phone: {{ $customer->phone }}<br>
+                                                            Nom du magasin: {{ $customer->shopname ? $customer->shopname : '-' }}<br>
+                                                            Téléphone: {{ $customer->phone }}<br>
                                                             Email: {{ $customer->email }}<br>
                                                         </p>
                                                     </td>
@@ -70,8 +70,8 @@
                                             <thead>
                                                 <tr>
                                                     <th class="text-center" scope="col">#</th>
-                                                    <th scope="col">Item</th>
-                                                    <th class="text-center" scope="col">Quantite</th>
+                                                    <th scope="col">Article</th>
+                                                    <th class="text-center" scope="col">Quantité</th>
                                                     <th class="text-center" scope="col">Prix</th>
                                                     <th class="text-center" scope="col">Total</th>
                                                 </tr>
@@ -107,9 +107,9 @@
                                 <div class="offset-lg-8 col-lg-4">
                                     <div class="or-detail rounded">
                                         <div class="p-3">
-                                            <h5 class="mb-3">Order Details</h5>
+                                            <h5 class="mb-3">Détails de la commande</h5>
                                             <div class="mb-2">
-                                                <h6>Bank</h6>
+                                                <h6>Banque</h6>
                                                 <p>{{ $customer->bank_name }}</p>
                                             </div>
                                             <div class="mb-2">
@@ -117,15 +117,15 @@
                                                 <p>{{ $customer->account_number }}</p>
                                             </div>
                                             <div class="mb-2">
-                                                <h6>Due Date</h6>
-                                                <p>12 August 2020</p>
+                                                <h6>Date d'échéance</h6>
+                                                <p>12 août 2020</p>
                                             </div>
                                             <div class="mb-2">
-                                                <h6>Sub Total</h6>
+                                                <h6>Sous-total</h6>
                                                 <p>${{ Cart::subtotal() }}</p>
                                             </div>
                                             <div>
-                                                <h6>Vat (5%)</h6>
+                                                <h6>TVA (5%)</h6>
                                                 <p>${{ Cart::tax() }}</p>
                                             </div>
                                         </div>

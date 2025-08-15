@@ -11,9 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class SupplierController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
         $row = (int) request('row', 10);
@@ -27,18 +25,14 @@ class SupplierController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    
     public function create()
     {
         return view('suppliers.create', [
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(Request $request)
     {
         $rules = [
@@ -58,9 +52,7 @@ class SupplierController extends Controller
 
         $validatedData = $request->validate($rules);
 
-        /**
-         * Handle upload image with Storage.
-         */
+        
         if ($file = $request->file('photo')) {
             $fileName = hexdec(uniqid()).'.'.$file->getClientOriginalExtension();
             $path = 'public/suppliers/';
@@ -71,12 +63,10 @@ class SupplierController extends Controller
 
         Supplier::create($validatedData);
 
-        return Redirect::route('suppliers.index')->with('success', 'Supplier has been created!');
+        return Redirect::route('suppliers.index')->with('success', 'Fournisseur créé avec succès!');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(Supplier $supplier)
     {
         return view('suppliers.show', [
@@ -84,9 +74,7 @@ class SupplierController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function edit(Supplier $supplier)
     {
         return view('suppliers.edit', [
@@ -94,9 +82,7 @@ class SupplierController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(Request $request, Supplier $supplier)
     {
         $rules = [
@@ -116,16 +102,12 @@ class SupplierController extends Controller
 
         $validatedData = $request->validate($rules);
 
-        /**
-         * Handle upload image with Storage.
-         */
+        
         if ($file = $request->file('photo')) {
             $fileName = hexdec(uniqid()).'.'.$file->getClientOriginalExtension();
             $path = 'public/suppliers/';
 
-            /**
-             * Delete photo if exists.
-             */
+            
             if($supplier->photo){
                 Storage::delete($path . $supplier->photo);
             }
@@ -136,23 +118,19 @@ class SupplierController extends Controller
 
         Supplier::where('id', $supplier->id)->update($validatedData);
 
-        return Redirect::route('suppliers.index')->with('success', 'Supplier has been updated!');
+        return Redirect::route('suppliers.index')->with('success', 'Fournisseur mis à jour avec succès!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(Supplier $supplier)
     {
-        /**
-         * Delete photo if exists.
-         */
+        
         if($supplier->photo){
             Storage::delete('public/suppliers/' . $supplier->photo);
         }
 
         Supplier::destroy($supplier->id);
 
-        return Redirect::route('suppliers.index')->with('success', 'Supplier has been deleted!');
+        return Redirect::route('suppliers.index')->with('success', 'Fournisseur supprimé avec succès!');
     }
 }

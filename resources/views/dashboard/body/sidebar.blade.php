@@ -16,7 +16,7 @@
                         <svg  class="svg-icon" id="p-dash1" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line>
                         </svg>
-                        <span class="ml-4">Dashboards</span>
+                        <span class="ml-4">{{ __('Tableau de bord') }}</span>
                     </a>
                 </li>
 
@@ -24,7 +24,7 @@
                 <li class="{{ Request::is('pos*') ? 'active' : '' }}">
                     <a href="{{ route('pos.index') }}" class="svg-icon">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="ml-3">INVENTAIRE</span>
+                        <span class="ml-3">{{ __('Point de vente') }}</span>
                     </a>
                 </li>
                 @endif
@@ -35,7 +35,7 @@
                 <li>
                     <a href="#orders" class="collapsed" data-toggle="collapse" aria-expanded="false">
                         <i class="fa-solid fa-basket-shopping"></i>
-                        <span class="ml-3">Commandes</span>
+                        <span class="ml-3">{{ __('Commandes') }}</span>
                         <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
                         </svg>
@@ -44,22 +44,22 @@
 
                         <li class="{{ Request::is('orders/pending*') ? 'active' : '' }}">
                             <a href="{{ route('order.pendingOrders') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>commandes en attentes</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>{{ __('Commandes en attente') }}</span>
                             </a>
                         </li>
                         <li class="{{ Request::is('orders/complete*') ? 'active' : '' }}">
                             <a href="{{ route('order.completeOrders') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Commandes Completes</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>{{ __('Commandes terminées') }}</span>
                             </a>
                         </li>
                         <li class="{{ Request::is('pending/due*') ? 'active' : '' }}">
                             <a href="{{ route('order.pendingDue') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>bilon commandes</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>{{ __('Commandes dues') }}</span>
                             </a>
                         </li>
                         <li class="{{ Request::is(['stock*']) ? 'active' : '' }}">
                             <a href="{{ route('order.stockManage') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Gestion Stock</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>{{ __('Gestion des stocks') }}</span>
                             </a>
                         </li>
                     </ul>
@@ -70,7 +70,7 @@
                 <li>
                     <a href="#products" class="collapsed" data-toggle="collapse" aria-expanded="false">
                         <i class="fa-solid fa-boxes-stacked"></i>
-                        <span class="ml-3">Produits</span>
+                        <span class="ml-3">{{ __('Produits') }}</span>
                         <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
                         </svg>
@@ -78,17 +78,17 @@
                     <ul id="products" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
                         <li class="{{ Request::is(['products']) ? 'active' : '' }}">
                             <a href="{{ route('products.index') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Produits</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>{{ __('Produits') }}</span>
                             </a>
                         </li>
                         <li class="{{ Request::is(['products/create']) ? 'active' : '' }}">
                             <a href="{{ route('products.create') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Ajouter Produit</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>{{ __('Ajouter un produit') }}</span>
                             </a>
                         </li>
                         <li class="{{ Request::is(['categories*']) ? 'active' : '' }}">
                             <a href="{{ route('categories.index') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Categories</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>{{ __('Catégories') }}</span>
                             </a>
                         </li>
                     </ul>
@@ -101,7 +101,7 @@
                 <li class="{{ Request::is('employees*') ? 'active' : '' }}">
                     <a href="{{ route('employees.index') }}" class="svg-icon">
                         <i class="fa-solid fa-users"></i>
-                        <span class="ml-3">Employés</span>
+                        <span class="ml-3">{{ __('Employés') }}</span>
                     </a>
                 </li>
                 @endif
@@ -110,7 +110,7 @@
                 <li class="{{ Request::is('customers*') ? 'active' : '' }}">
                     <a href="{{ route('customers.index') }}" class="svg-icon">
                         <i class="fa-solid fa-users"></i>
-                        <span class="ml-3">Clients</span>
+                        <span class="ml-3">{{ __('Clients') }}</span>
                     </a>
                 </li>
                 @endif
@@ -119,7 +119,7 @@
                 <li class="{{ Request::is('suppliers*') ? 'active' : '' }}">
                     <a href="{{ route('suppliers.index') }}" class="svg-icon">
                         <i class="fa-solid fa-users"></i>
-                        <span class="ml-3">Fournisseurs</span>
+                        <span class="ml-3">{{ __('Fournisseurs') }}</span>
                     </a>
                 </li>
                 @endif
@@ -128,7 +128,7 @@
                 <li>
                     <a href="#advance-salary" class="collapsed" data-toggle="collapse" aria-expanded="false">
                     <i class="fa-solid fa-cash-register"></i>
-                        <span class="ml-3">Salaires</span>
+                        <span class="ml-3">{{ __('Salaires') }}</span>
                         <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
                         </svg>
@@ -137,22 +137,22 @@
 
                         <li class="{{ Request::is(['advance-salary', 'advance-salary/*/edit']) ? 'active' : '' }}">
                             <a href="{{ route('advance-salary.index') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Toutes Advances Salaires</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>{{ __('Toutes les avances sur salaire') }}</span>
                             </a>
                         </li>
                         <li class="{{ Request::is('advance-salary/create*') ? 'active' : '' }}">
                             <a href="{{ route('advance-salary.create') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Creer Advance Salaire</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>{{ __('Créer une avance sur salaire') }}</span>
                             </a>
                         </li>
                         <li class="{{ Request::is('pay-salary') ? 'active' : '' }}">
                             <a href="{{ route('pay-salary.index') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Payer Salaire</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>{{ __('Payer le salaire') }}</span>
                             </a>
                         </li>
                         <li class="{{ Request::is('pay-salary/history*') ? 'active' : '' }}">
                             <a href="{{ route('pay-salary.payHistory') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Historique Payements Salaire</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>{{ __('Historique des paiements') }}</span>
                             </a>
                         </li>
                     </ul>
@@ -163,7 +163,7 @@
                 <li>
                     <a href="#attendence" class="collapsed" data-toggle="collapse" aria-expanded="false">
                         <i class="fa-solid fa-calendar-days"></i>
-                        <span class="ml-3">Presence</span>
+                        <span class="ml-3">{{ __('Présence') }}</span>
                         <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
                         </svg>
@@ -172,12 +172,12 @@
 
                         <li class="{{ Request::is(['employee/attendence']) ? 'active' : '' }}">
                             <a href="{{ route('attendence.index') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Liste Presences</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>{{ __('Liste de présence') }}</span>
                             </a>
                         </li>
                         <li class="{{ Request::is('employee/attendence/*') ? 'active' : '' }}">
                             <a href="{{ route('attendence.create') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Creer liste de presence</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>{{ __('Créer une liste de présence') }}</span>
                             </a>
                         </li>
                     </ul>
@@ -191,7 +191,7 @@
                 <li>
                     <a href="#permission" class="collapsed" data-toggle="collapse" aria-expanded="false">
                         <i class="fa-solid fa-key"></i>
-                        <span class="ml-3">Role & Permission</span>
+                        <span class="ml-3">{{ __('Rôles et permissions') }}</span>
                         <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
                         </svg>
@@ -199,17 +199,17 @@
                     <ul id="permission" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
                         <li class="{{ Request::is(['permission', 'permission/create', 'permission/edit/*']) ? 'active' : '' }}">
                             <a href="{{ route('permission.index') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Permissions</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>{{ __('Permissions') }}</span>
                             </a>
                         </li>
                         <li class="{{ Request::is(['role', 'role/create', 'role/edit/*']) ? 'active' : '' }}">
                             <a href="{{ route('role.index') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Roles</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>{{ __('Rôles') }}</span>
                             </a>
                         </li>
                         <li class="{{ Request::is(['role/permission*']) ? 'active' : '' }}">
                             <a href="{{ route('rolePermission.index') }}">
-                                <i class="fa-solid fa-arrow-right"></i><span>Role dans les Permissions</span>
+                                <i class="fa-solid fa-arrow-right"></i><span>{{ __('Rôle dans les permissions') }}</span>
                             </a>
                         </li>
                     </ul>
@@ -220,7 +220,7 @@
                 <li class="{{ Request::is('users*') ? 'active' : '' }}">
                     <a href="{{ route('users.index') }}" class="svg-icon">
                         <i class="fa-solid fa-users"></i>
-                        <span class="ml-3">Utilisateurs</span>
+                        <span class="ml-3">{{ __('Utilisateurs') }}</span>
                     </a>
                 </li>
                 @endif
@@ -229,7 +229,7 @@
                 <li class="{{ Request::is('database/backup*') ? 'active' : '' }}">
                     <a href="{{ route('backup.index') }}" class="svg-icon">
                         <i class="fa-solid fa-database"></i>
-                        <span class="ml-3">Backup Base De Donnee</span>
+                        <span class="ml-3">{{ __('Sauvegarde de base de données') }}</span>
                     </a>
                 </li>
                 @endif

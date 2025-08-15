@@ -7,7 +7,7 @@
             @if (session()->has('success'))
                 <div class="alert text-white bg-success" role="alert">
                     <div class="iq-alert-text">{{ session('success') }}</div>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Fermer">
                     <i class="ri-close-line"></i>
                     </button>
                 </div>
@@ -15,21 +15,20 @@
             @if (session()->has('error'))
                 <div class="alert text-white bg-danger" role="alert">
                     <div class="iq-alert-text">{{ session('success') }}</div>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Fermer">
                     <i class="ri-close-line"></i>
                     </button>
                 </div>
             @endif
             <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                 <div>
-                    <h4 class="mb-3">Product List</h4>
-                    <p class="mb-0">A product dashboard lets you easily gather and visualize product data from optimizing <br>
-                        the product experience, ensuring product retention. </p>
+                    <h4 class="mb-3">{{ __('Product List') }}</h4>
+                    <p class="mb-0">{{ __('A product dashboard lets you easily gather and visualize product data from optimizing the product experience, ensuring product retention.') }}</p>
                 </div>
                 <div>
-                <a href="{{ route('products.importView') }}" class="btn btn-success add-list">Import</a>
-                <a href="{{ route('products.exportData') }}" class="btn btn-warning add-list">Export</a>
-                <a href="{{ route('products.create') }}" class="btn btn-primary add-list">Ajouter Produit</a>
+                <a href="{{ route('products.importView') }}" class="btn btn-success add-list">{{ __('Import') }}</a>
+                <a href="{{ route('products.exportData') }}" class="btn btn-warning add-list">{{ __('Export') }}</a>
+                <a href="{{ route('products.create') }}" class="btn btn-primary add-list">{{ __('Add Product') }}</a>
                 </div>
             </div>
         </div>
@@ -38,7 +37,7 @@
             <form action="{{ route('products.index') }}" method="get">
                 <div class="d-flex flex-wrap align-items-center justify-content-between">
                     <div class="form-group row">
-                        <label for="row" class="col-sm-3 align-self-center">Row:</label>
+                        <label for="row" class="col-sm-3 align-self-center">Ligne:</label>
                         <div class="col-sm-9">
                             <select class="form-control" name="row">
                                 <option value="10" @if(request('row') == '10')selected="selected"@endif>10</option>
@@ -50,9 +49,9 @@
                     </div>
 
                     <div class="form-group row">
-                        <label class="control-label col-sm-3 align-self-center" for="search">Chercher:</label>
+                        <label class="control-label col-sm-3 align-self-center" for="search">{{ __('Search') }}:</label>
                         <div class="input-group col-sm-8">
-                            <input type="text" id="search" class="form-control" name="search" placeholder="Chercher produit" value="{{ request('search') }}">
+                            <input type="text" id="search" class="form-control" name="search" placeholder="Chercher un produit" value="{{ request('search') }}">
                             <div class="input-group-append">
                                 <button type="submit" class="input-group-text bg-primary"><i class="fa-solid fa-magnifying-glass font-size-20"></i></button>
                                 <a href="{{ route('products.index') }}" class="input-group-text bg-danger"><i class="fa-solid fa-trash"></i></a>
@@ -68,14 +67,14 @@
                 <table class="table mb-0">
                     <thead class="bg-white text-uppercase">
                         <tr class="ligth ligth-data">
-                            <th>Num
-                            <th>Photo</th>
-                            <th>@sortablelink('product_name', 'name')</th>
-                            <th>@sortablelink('category.name', 'category')</th>
-                            <th>@sortablelink('supplier.name', 'supplier')</th>
-                            <th>@sortablelink('selling_price', 'price')</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th>{{ __('No') }}</th>
+                            <th>{{ __('Photo') }}</th>
+                            <th>@sortablelink('product_name', 'Nom du produit')</th>
+                            <th>@sortablelink('category.name', 'Nom de la catégorie')</th>
+                            <th>@sortablelink('supplier.name', 'Nom du fournisseur')</th>
+                            <th>@sortablelink('selling_price', 'Prix')</th>
+                            <th>{{ __('Status') }}</th>
+                            <th>{{ __('Action') }}</th>
                         </tr>
                     </thead>
                     <tbody class="ligth-body">
@@ -91,9 +90,9 @@
                             <td>{{ $product->selling_price }}</td>
                             <td>
                                 @if ($product->expire_date > Carbon\Carbon::now()->format('Y-m-d'))
-                                    <span class="badge rounded-pill bg-success">Valid</span>
+                                    <span class="badge rounded-pill bg-success">{{ __('Valid') }}</span>
                                 @else
-                                    <span class="badge rounded-pill bg-danger">Invalid</span>
+                                    <span class="badge rounded-pill bg-danger">{{ __('Invalid') }}</span>
                                 @endif
                             </td>
                             <td>
@@ -101,13 +100,13 @@
                                     @method('delete')
                                     @csrf
                                     <div class="d-flex align-items-center list-action">
-                                        <a class="btn btn-info mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="View"
+                                        <a class="btn btn-info mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ __('View') }}"
                                             href="{{ route('products.show', $product->id) }}"><i class="ri-eye-line mr-0"></i>
                                         </a>
-                                        <a class="btn btn-success mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"
+                                        <a class="btn btn-success mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ __('Edit') }}"
                                             href="{{ route('products.edit', $product->id) }}""><i class="ri-pencil-line mr-0"></i>
                                         </a>
-                                            <button type="submit" class="btn btn-warning mr-2 border-none" onclick="return confirm('Are you sure you want to delete this record?')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="ri-delete-bin-line mr-0"></i></button>
+                                            <button type="submit" class="btn btn-warning mr-2 border-none" onclick="return confirm('{{ __('Are you sure you want to delete this record?') }}')" data-toggle="tooltip" data-placement="top" title="" data-original-title="{{ __('Delete') }}"><i class="ri-delete-bin-line mr-0"></i></button>
                                     </div>
                                 </form>
                             </td>
@@ -115,8 +114,8 @@
 
                         @empty
                         <div class="alert text-white bg-danger" role="alert">
-                            <div class="iq-alert-text">Data not Found.</div>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <div class="iq-alert-text">{{ __('Données non trouvées.') }}</div>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Fermer">
                             <i class="ri-close-line"></i>
                             </button>
                         </div>

@@ -8,7 +8,7 @@
             @if (session()->has('success'))
                 <div class="alert text-white bg-success" role="alert">
                     <div class="iq-alert-text">{{ session('success') }}</div>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Fermer">
                     <i class="ri-close-line"></i>
                     </button>
                 </div>
@@ -22,10 +22,10 @@
             <table class="table">
                 <thead>
                     <tr class="ligth">
-                        <th scope="col">Nom</th>
-                        <th scope="col">QTe</th>
-                        <th scope="col">Prix</th>
-                        <th scope="col">Totale</th>
+                        <th scope="col">{{ __('Nom') }}</th>
+                        <th scope="col">{{ __('Quantité') }}</th>
+                        <th scope="col">{{ __('Prix') }}</th>
+                        <th scope="col">{{ __('Total') }}</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -56,16 +56,16 @@
 
             <div class="container row text-center">
                 <div class="form-group col-sm-6">
-                    <p class="h4 text-primary">Quantite: {{ Cart::count() }}</p>
+                            <p class="h4 text-primary">{{ __('Quantité') }}: {{ Cart::count() }}</p>
                 </div>
                 <div class="form-group col-sm-6">
-                    <p class="h4 text-primary">total: {{ Cart::subtotal() }}</p>
+                            <p class="h4 text-primary">{{ __('Subtotal') }}: {{ Cart::subtotal() }}</p>
                 </div>
                 <div class="form-group col-sm-6">
-                    <p class="h4 text-primary">tax: {{ Cart::tax() }}</p>
+                    <p class="h4 text-primary">{{ __('TAX') }}: {{ Cart::tax() }}</p>
                 </div>
                 <div class="form-group col-sm-6">
-                    <p class="h4 text-primary">Total AT: {{ Cart::total() }}</p>
+                    <p class="h4 text-primary">{{ __('Total') }}: {{ Cart::total() }}</p>
                 </div>
             </div>
 
@@ -75,7 +75,7 @@
                     <div class="col-md-12">
                         <div class="input-group">
                             <select class="form-control" id="customer_id" name="customer_id">
-                                <option selected="" disabled="">-- Selectionner client--</option>
+                                <option selected="" disabled="">-- {{ __('Select Customer') }} --</option>
                                 @foreach ($customers as $customer)
                                     <option value="{{ $customer->id }}">{{ $customer->name }}</option>
                                 @endforeach
@@ -89,8 +89,8 @@
                     </div>
                     <div class="col-md-12 mt-4">
                         <div class="d-flex flex-wrap align-items-center justify-content-center">
-                            <a href="{{ route('customers.create') }}" class="btn btn-primary add-list mx-1">Ajouter client</a>
-                            <button type="submit" class="btn btn-success add-list mx-1">Creer facture</button>
+                            <a href="{{ route('customers.create') }}" class="btn btn-primary add-list mx-1">{{ __('Ajouter un client') }}</a>
+                            <button type="submit" class="btn btn-success add-list mx-1">{{ __('Créer une facture') }}</button>
                         </div>
                     </div>
                 </div>
@@ -132,10 +132,10 @@
                         <table class="table mb-0">
                             <thead class="bg-white text-uppercase">
                                 <tr class="ligth ligth-data">
-                                    <th>Num
+                                    <th>Num</th>
                                     <th>Photo</th>
-                                    <th>@sortablelink('product_name', 'name')</th>
-                                    <th>@sortablelink('selling_price', 'price')</th>
+                                    <th>@sortablelink('product_name', 'Nom du produit')</th>
+                                    <th>@sortablelink('selling_price', 'Prix')</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -162,8 +162,8 @@
 
                                 @empty
                                 <div class="alert text-white bg-danger" role="alert">
-                                    <div class="iq-alert-text">Data not Found.</div>
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <div class="iq-alert-text">Données non trouvées.</div>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Fermer">
                                     <i class="ri-close-line"></i>
                                     </button>
                                 </div>

@@ -7,24 +7,24 @@
             @if (session()->has('success'))
                 <div class="alert text-white bg-success" role="alert">
                     <div class="iq-alert-text">{{ session('success') }}</div>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Fermer">
                     <i class="ri-close-line"></i>
                     </button>
                 </div>
             @endif
             @if (session()->has('error'))
                 <div class="alert text-white bg-danger" role="alert">
-                    <div class="iq-alert-text">{{ session('success') }}</div>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <div class="iq-alert-text">{{ session('error') }}</div>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Fermer">
                     <i class="ri-close-line"></i>
                     </button>
                 </div>
             @endif
             <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                 <div>
-                    <h4 class="mb-3">Stock Product List</h4>
-                    <p class="mb-0">A stock product dashboard lets you easily gather and visualize stock product data from optimizing <br>
-                        the stock product experience, ensuring stock product retention. </p>
+                    <h4 class="mb-3">Liste des Produits en Stock</h4>
+                    <p class="mb-0">Un tableau de bord des produits en stock vous permet de rassembler et de visualiser facilement les données des produits en stock pour optimiser <br>
+                        l'expérience des produits en stock, garantissant la rétention des produits en stock. </p>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
             <form action="{{ route('order.stockManage') }}" method="get">
                 <div class="d-flex flex-wrap align-items-center justify-content-between">
                     <div class="form-group row">
-                        <label for="row" class="col-sm-3 align-self-center">Row:</label>
+                        <label for="row" class="col-sm-3 align-self-center">Ligne:</label>
                         <div class="col-sm-9">
                             <select class="form-control" name="row">
                                 <option value="10" @if(request('row') == '10')selected="selected"@endif>10</option>
@@ -63,12 +63,12 @@
                 <table class="table mb-0">
                     <thead class="bg-white text-uppercase">
                         <tr class="ligth ligth-data">
-                            <th>Num
+                            <th>Num</th>
                             <th>Photo</th>
-                            <th>@sortablelink('product_name', 'name')</th>
-                            <th>@sortablelink('category.name', 'category')</th>
-                            <th>@sortablelink('supplier.name', 'supplier')</th>
-                            <th>@sortablelink('selling_price', 'price')</th>
+                            <th>@sortablelink('product_name', 'Nom du produit')</th>
+                            <th>@sortablelink('category.name', 'Catégorie')</th>
+                            <th>@sortablelink('supplier.name', 'Fournisseur')</th>
+                            <th>@sortablelink('selling_price', 'Prix')</th>
                             <th>Stock</th>
                         </tr>
                     </thead>
@@ -90,8 +90,8 @@
 
                         @empty
                         <div class="alert text-white bg-danger" role="alert">
-                            <div class="iq-alert-text">Data not Found.</div>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <div class="iq-alert-text">{{ __('Données non trouvées.') }}</div>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Fermer">
                             <i class="ri-close-line"></i>
                             </button>
                         </div>

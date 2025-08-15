@@ -13,18 +13,18 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Barcode</h4>
+                        <h4 class="card-title">{{ __('Barcode') }}</h4>
                     </div>
                 </div>
 
                 <div class="card-body">
                     <div class=" row align-items-center">
                         <div class="form-group col-md-6">
-                            <label>Product Code</label>
+                            <label>{{ __('Product Code') }}</label>
                             <input type="text" class="form-control bg-white" value="{{  $product->product_code }}" readonly>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Product Barcode</label>
+                            <label>{{ __('Product Barcode') }}</label>
                             {!! $barcode !!}
                         </div>
                     </div>
@@ -37,7 +37,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Information Product</h4>
+                        <h4 class="card-title">{{ __('Product Information') }}</h4>
                     </div>
                 </div>
 
@@ -55,39 +55,39 @@
 
                     <div class=" row align-items-center">
                         <div class="form-group col-md-12">
-                            <label>Product nom</label>
+                            <label>{{ __('Product Name') }}</label>
                             <input type="text" class="form-control bg-white" value="{{  $product->product_name }}" readonly>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Category</label>
+                            <label>{{ __('Category') }}</label>
                             <input type="text" class="form-control bg-white" value="{{  $product->category->name }}" readonly>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Supplier</label>
+                            <label>{{ __('Supplier') }}</label>
                             <input type="text" class="form-control bg-white" value="{{  $product->supplier->name }}" readonly>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Product Garage</label>
+                            <label>{{ __('Product Garage') }}</label>
                             <input type="text" class="form-control bg-white" value="{{  $product->product_garage }}" readonly>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Product Store</label>
+                            <label>{{ __('Product Store') }}</label>
                             <input type="text" class="form-control bg-white" value="{{  $product->product_store }}" readonly>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Buying Date</label>
+                            <label>{{ __('Buying Date') }}</label>
                             <input class="form-control bg-white" id="buying_date" value="{{ $product->buying_date }}" readonly/>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Expire Date</label>
+                            <label>{{ __('Expire Date') }}</label>
                             <input class="form-control bg-white" id="expire_date" value="{{ $product->expire_date }}" readonly />
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Buying Price</label>
+                            <label>{{ __('Buying Price') }}</label>
                             <input type="text" class="form-control bg-white" value="{{  $product->buying_price }}" readonly>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Selling Price</label>
+                            <label>{{ __('Selling Price') }}</label>
                             <input type="text" class="form-control bg-white" value="{{  $product->selling_price }}" readonly>
                         </div>
                     </div>

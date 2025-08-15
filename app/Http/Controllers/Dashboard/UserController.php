@@ -13,9 +13,7 @@ use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
         $row = (int) request('row', 10);
@@ -29,9 +27,7 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    
     public function create()
     {
         return view('users.create', [
@@ -39,9 +35,7 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(Request $request)
     {
         $rules = [
@@ -56,9 +50,7 @@ class UserController extends Controller
         $validatedData = $request->validate($rules);
         $validatedData['password'] = Hash::make($request->password);
 
-        /**
-         * Handle upload image with Storage.
-         */
+        
         if ($file = $request->file('photo')) {
             $fileName = hexdec(uniqid()).'.'.$file->getClientOriginalExtension();
             $path = 'public/profile/';
@@ -73,20 +65,16 @@ class UserController extends Controller
             $user->assignRole($request->role);
         }
 
-        return Redirect::route('users.index')->with('success', 'New User has been created!');
+        return Redirect::route('users.index')->with('success', 'Nouvel utilisateur créé avec succès!');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(User $user)
     {
-        //
+        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function edit(User $user)
     {
         return view('users.edit', [
@@ -95,9 +83,7 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(Request $request, User $user)
     {
         $rules = [
@@ -115,16 +101,12 @@ class UserController extends Controller
         $validatedData = $request->validate($rules);
         $validatedData['password'] = Hash::make($request->password);
 
-        /**
-         * Handle upload image with Storage.
-         */
+        
         if ($file = $request->file('photo')) {
             $fileName = hexdec(uniqid()).'.'.$file->getClientOriginalExtension();
             $path = 'public/profile/';
 
-            /**
-             * Delete photo if exists.
-             */
+            
             if($user->photo){
                 Storage::delete($path . $user->photo);
             }
@@ -140,23 +122,19 @@ class UserController extends Controller
             $userData->syncRoles($request->role);
         }
 
-        return Redirect::route('users.index')->with('success', 'User has been updated!');
+        return Redirect::route('users.index')->with('success', 'Utilisateur mis à jour avec succès!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(User $user)
     {
-        /**
-         * Delete photo if exists.
-         */
+        
         if($user->photo){
             Storage::delete('public/profile/' . $user->photo);
         }
 
         User::destroy($user->id);
 
-        return Redirect::route('users.index')->with('success', 'User has been deleted!');
+        return Redirect::route('users.index')->with('success', 'Utilisateur supprimé avec succès!');
     }
 }

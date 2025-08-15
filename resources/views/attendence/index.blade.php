@@ -7,20 +7,20 @@
             @if (session()->has('success'))
                 <div class="alert text-white bg-success" role="alert">
                     <div class="iq-alert-text">{{ session('success') }}</div>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Fermer">
                     <i class="ri-close-line"></i>
                     </button>
                 </div>
             @endif
             <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                 <div>
-                    <h4 class="mb-3">Attendence List</h4>
-                    <p class="mb-0">A Attendence dashboard lets you easily gather and visualize Attendence data from optimizing <br>
-                        the Attendence experience, ensuring Attendence retention. </p>
+                    <h4 class="mb-3">Liste des présences</h4>
+                    <p class="mb-0">Un tableau de bord des présences vous permet de rassembler et de visualiser facilement les données de<br> présence en optimisant
+                        l'expérience de présence, garantissant la rétention des présences. </p>
                 </div>
                 <div>
-                    <a href="{{ route('attendence.create') }}" class="btn btn-primary add-list"><i class="fas fa-plus mr-3"></i>Create Attendence</a>
-                    <a href="{{ route('attendence.index') }}" class="btn btn-danger add-list"><i class="fa-solid fa-trash mr-3"></i>Clear Search</a>
+                    <a href="{{ route('attendence.create') }}" class="btn btn-primary add-list"><i class="fas fa-plus mr-3"></i>Créer une présence</a>
+                    <a href="{{ route('attendence.index') }}" class="btn btn-danger add-list"><i class="fa-solid fa-trash mr-3"></i>Effacer la recherche</a>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
             <form action="{{ route('attendence.index') }}" method="get">
                 <div class="d-flex flex-wrap align-items-center justify-content-between">
                     <div class="form-group row">
-                        <label for="row" class="col-sm-3 align-self-center">Row:</label>
+                        <label for="row" class="col-sm-3 align-self-center">Ligne:</label>
                         <div class="col-sm-9">
                             <select class="form-control" name="row">
                                 <option value="10" @if(request('row') == '10')selected="selected"@endif>10</option>
@@ -73,8 +73,8 @@
                         </tr>
                         @empty
                         <div class="alert text-white bg-danger" role="alert">
-                            <div class="iq-alert-text">Data not Found.</div>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <div class="iq-alert-text">Données non trouvées.</div>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Fermer">
                             <i class="ri-close-line"></i>
                             </button>
                         </div>

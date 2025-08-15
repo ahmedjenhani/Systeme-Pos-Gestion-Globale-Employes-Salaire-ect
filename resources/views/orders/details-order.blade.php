@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Information Order Details</h4>
+                        <h4 class="card-title">Informations Commande</h4>
                     </div>
                 </div>
 
@@ -26,35 +26,35 @@
 
                     <div class="row align-items-center">
                         <div class="form-group col-md-12">
-                            <label>Customer nom</label>
+                            <label>Nom Client</label>
                             <input type="text" class="form-control bg-white" value="{{ $order->customer->name }}" readonly>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Customer Email</label>
+                            <label>Email Client</label>
                             <input type="text" class="form-control bg-white" value="{{ $order->customer->email }}" readonly>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Customer Phone</label>
+                            <label>Téléphone Client</label>
                             <input type="text" class="form-control bg-white" value="{{ $order->customer->phone }}" readonly>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Order Date</label>
+                            <label>Date de Commande</label>
                             <input type="text" class="form-control bg-white" value="{{ $order->order_date }}" readonly>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Order Invoice</label>
+                            <label>Facture de Commande</label>
                             <input class="form-control bg-white" id="buying_date" value="{{ $order->invoice_no }}" readonly/>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Payment Status</label>
+                            <label>Statut de Paiement</label>
                             <input class="form-control bg-white" id="expire_date" value="{{ $order->payment_status }}" readonly />
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Paid Amount</label>
+                            <label>Montant Payé</label>
                             <input type="text" class="form-control bg-white" value="{{ $order->pay }}" readonly>
                         </div>
                         <div class="form-group col-md-6">
-                            <label>Due Amount</label>
+                            <label>Montant Restant</label>
                             <input type="text" class="form-control bg-white" value="{{ $order->due }}" readonly>
                         </div>
                     </div>
@@ -89,9 +89,9 @@
                         <tr class="ligth ligth-data">
                             <th>Num.</th>
                             <th>Photo</th>
-                            <th>Product Nom</th>
-                            <th>Product Code</th>
-                            <th>Quantite</th>
+                            <th>Nom du Produit</th>
+                            <th>Code du Produit</th>
+                            <th>Quantité</th>
                             <th>Prix</th>
                             <th>Total(+vat)</th>
                         </tr>

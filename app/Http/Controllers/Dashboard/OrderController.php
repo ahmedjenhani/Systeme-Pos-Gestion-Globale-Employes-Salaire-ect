@@ -16,9 +16,7 @@ use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function pendingOrders()
     {
         $row = (int) request('row', 10);
@@ -66,9 +64,7 @@ class OrderController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function storeOrder(Request $request)
     {
         $rules = [
@@ -98,7 +94,7 @@ class OrderController extends Controller
 
         $order_id = Order::insertGetId($validatedData);
 
-        // Create Order Details
+        
         $contents = Cart::content();
         $oDetails = array();
 
@@ -113,15 +109,13 @@ class OrderController extends Controller
             OrderDetails::insert($oDetails);
         }
 
-        // Delete Cart Sopping History
+        
         Cart::destroy();
 
-        return Redirect::route('dashboard')->with('success', 'Order has been created!');
+        return Redirect::route('dashboard')->with('success', 'Commande créée avec succès!');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    
     public function orderDetails(Int $order_id)
     {
         $order = Order::where('id', $order_id)->first();
@@ -136,14 +130,12 @@ class OrderController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function updateStatus(Request $request)
     {
         $order_id = $request->id;
 
-        // Reduce the stock
+        
         $products = OrderDetails::where('order_id', $order_id)->get();
 
         foreach ($products as $product) {
@@ -153,7 +145,7 @@ class OrderController extends Controller
 
         Order::findOrFail($order_id)->update(['order_status' => 'complete']);
 
-        return Redirect::route('order.pendingOrders')->with('success', 'Order has been completed!');
+        return Redirect::route('order.pendingOrders')->with('success', 'Commande terminée avec succès!');
     }
 
     public function invoiceDownload(Int $order_id)
@@ -164,7 +156,7 @@ class OrderController extends Controller
                         ->orderBy('id', 'DESC')
                         ->get();
 
-        // show data (only for debugging)
+        
         return view('orders.invoice-order', [
             'order' => $order,
             'orderDetails' => $orderDetails,
@@ -216,6 +208,6 @@ class OrderController extends Controller
             'pay' => $paid_pay,
         ]);
 
-        return Redirect::route('order.pendingDue')->with('success', 'Due Amount Updated Successfully!');
+        return Redirect::route('order.pendingDue')->with('success', 'Montant dû mis à jour avec succès!');
     }
 }

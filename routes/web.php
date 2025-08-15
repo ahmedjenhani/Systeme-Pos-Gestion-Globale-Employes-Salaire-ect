@@ -131,13 +131,30 @@ Route::middleware(['permission:orders.menu'])->group(function () {
     Route::get('/database/backup/delete/{getFileName}', [DatabaseBackupController::class, 'delete'])->name('backup.delete');
 });
 */
+/*
 Route::middleware(['permission:database.menu'])->group(function () {
     Route::get('/database/backup', [DatabaseBackupController::class, 'index'])->name('backup.index');
     Route::get('/database/backup/now', [DatabaseBackupController::class, 'create'])->name('backup.create');
     Route::get('/database/backup/download/{getFileName}', [DatabaseBackupController::class, 'download'])->name('backup.download');
     Route::get('/database/backup/delete/{getFileName}', [DatabaseBackupController::class, 'delete'])->name('backup.delete');
 });
-
+*/
+/*
+// ====== DATABASE BACKUP ======
+Route::middleware(['permission:database.menu'])->group(function () {
+    Route::get('/database/backup', [DatabaseBackupController::class, 'index'])->name('backup.index');
+    Route::get('/database/backup/now', [DatabaseBackupController::class, 'create'])->name('backup.create');
+    Route::get('/database/backup/download/{getFileName}', [DatabaseBackupController::class, 'download'])->name('backup.download');
+    Route::delete('/database/backup/delete/{getFileName}', [DatabaseBackupController::class, 'delete'])->name('backup.delete');
+});
+*/
+// ====== DATABASE BACKUP ======
+Route::middleware(['permission:database.menu'])->group(function () {
+    Route::get('/database/backup', [DatabaseBackupController::class, 'index'])->name('backup.index');
+    Route::get('/database/backup/now', [DatabaseBackupController::class, 'create'])->name('backup.create');
+    Route::get('/database/backup/download/{getFileName}', [DatabaseBackupController::class, 'download'])->name('backup.download');
+    Route::delete('/database/backup/delete/{getFileName}', [DatabaseBackupController::class, 'delete'])->name('backup.delete');
+});
 // ====== ROLE CONTROLLER ======
 Route::middleware(['permission:roles.menu'])->group(function () {
     // Permissions

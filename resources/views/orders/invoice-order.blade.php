@@ -109,10 +109,10 @@
 
                     <div class="invoice-btn-section clearfix d-print-none">
                         <a href="javascript:window.print()" class="btn btn-lg btn-print">
-                            Print Invoice
+                            Imprimer Facture
                         </a>
                         <a id="invoice_download_btn" class="btn btn-lg btn-download">
-                            Download Invoice
+                            Télécharger Facture
                         </a>
                     </div>
                 </div>

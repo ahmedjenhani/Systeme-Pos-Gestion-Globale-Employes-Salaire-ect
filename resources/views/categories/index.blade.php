@@ -7,20 +7,20 @@
             @if (session()->has('success'))
                 <div class="alert text-white bg-success" role="alert">
                     <div class="iq-alert-text">{{ session('success') }}</div>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Fermer">
                     <i class="ri-close-line"></i>
                     </button>
                 </div>
             @endif
             <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                 <div>
-                    <h4 class="mb-3">Category List</h4>
-                    <p class="mb-0">A Category dashboard lets you easily gather and visualize Category data from optimizing <br>
-                        the Category experience, ensuring Category retention. </p>
+                    <h4 class="mb-3">Liste des Catégories</h4>
+                    <p class="mb-0">Un tableau de bord des catégories vous permet de rassembler et de visualiser<br> facilement les données des catégories pour optimiser 
+                        l'expérience des catégories,<br> garantissant la rétention des catégories. </p>
                 </div>
                 <div>
-                <a href="{{ route('categories.create') }}" class="btn btn-primary add-list"><i class="fas fa-plus mr-3"></i>Create Category</a>
-                <a href="{{ route('categories.index') }}" class="btn btn-danger add-list"><i class="fa-solid fa-trash mr-3"></i>Clear Search</a>
+                <a href="{{ route('categories.create') }}" class="btn btn-primary add-list"><i class="fas fa-plus mr-3"></i>Créer Catégorie</a>
+                <a href="{{ route('categories.index') }}" class="btn btn-danger add-list"><i class="fa-solid fa-trash mr-3"></i>Effacer la recherche</a>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
             <form action="{{ route('categories.index') }}" method="get">
                 <div class="d-flex flex-wrap align-items-center justify-content-between">
                     <div class="form-group row">
-                        <label for="row" class="col-sm-3 align-self-center">Row:</label>
+                        <label for="row" class="col-sm-3 align-self-center">Ligne:</label>
                         <div class="col-sm-9">
                             <select class="form-control" name="row">
                                 <option value="10" @if(request('row') == '10')selected="selected"@endif>10</option>
@@ -44,7 +44,7 @@
                         <label class="control-label col-sm-3 align-self-center" for="search">Chercher:</label>
                         <div class="col-sm-8">
                             <div class="input-group">
-                                <input type="text" id="search" class="form-control" name="search" placeholder="Search category" value="{{ request('search') }}">
+                                <input type="text" id="search" class="form-control" name="search" placeholder="Chercher une catégorie" value="{{ request('search') }}">
                                 <div class="input-group-append">
                                     <button type="submit" class="input-group-text bg-primary"><i class="fa-solid fa-magnifying-glass font-size-20"></i></button>
                                 </div>
@@ -60,8 +60,8 @@
                 <table class="table mb-0">
                     <thead class="bg-white text-uppercase">
                         <tr class="ligth ligth-data">
-                            <th>Num
-                            <th>@sortablelink('name')</th>
+                            <th>Num</th>
+                            <th>@sortablelink('Nom')</th>
                             <th>@sortablelink('slug')</th>
                             <th>Action</th>
                         </tr>
@@ -88,8 +88,8 @@
 
                         @empty
                         <div class="alert text-white bg-danger" role="alert">
-                            <div class="iq-alert-text">Data not Found.</div>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <div class="iq-alert-text">Données non trouvées.</div>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Fermer">
                             <i class="ri-close-line"></i>
                             </button>
                         </div>

@@ -74,7 +74,7 @@
                         <!-- begin: Input Data -->
                         <div class=" row align-items-center">
                             <div class="form-group col-md-6">
-                                <label for="name">Permission Name <span class="text-danger">*</span></label>
+                                <label for="name">Nom Permission <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}" required autocomplete="off">
                                 @error('name')
                                 <div class="invalid-feedback">
@@ -84,9 +84,9 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="group_name">Group Name <span class="text-danger">*</span></label>
+                                <label for="group_name">Nom du groupe <span class="text-danger">*</span></label>
                                 <select class="form-control @error('group_name') is-invalid @enderror" name="group_name" required>
-                                    <option selected="" disabled>-- Select Group --</option>
+                                    <option selected="" disabled>-- Selectionner Groupe --</option>
                                     @foreach ($group_names as $item)
                                         <option value="{{ $item['slug'] }}">{{ $item['name'] }}</option>
                                     @endforeach
@@ -100,8 +100,8 @@
                         </div>
                         <!-- end: Input Data -->
                         <div class="mt-2">
-                            <button type="submit" class="btn btn-primary mr-2">Save</button>
-                            <a class="btn bg-danger" href="{{ route('permission.index') }}">Cancel</a>
+                            <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
+                            <a class="btn bg-danger" href="{{ route('permission.index') }}">Annuler</a>
                         </div>
                     </form>
                 </div>

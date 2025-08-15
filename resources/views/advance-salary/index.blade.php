@@ -7,20 +7,20 @@
             @if (session()->has('success'))
                 <div class="alert text-white bg-success" role="alert">
                     <div class="iq-alert-text">{{ session('success') }}</div>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Fermer">
                     <i class="ri-close-line"></i>
                     </button>
                 </div>
             @endif
             <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                 <div>
-                    <h4 class="mb-3">Advance Salary List</h4>
-                    <p class="mb-0">A advance salary dashboard lets you easily gather and visualize advance salary data from optimizing <br>
-                        the advance salary experience, ensuring advance salary retention. </p>
+                    <h4 class="mb-3">Liste des salaires anticipés</h4>
+                    <p class="mb-0">Un tableau de bord des salaires anticipés vous permet de rassembler et de visualiser<br> facilement les données sur les salaires anticipés en optimisant
+                        l'expérience<br> des salaires anticipés, garantissant la rétention des salaires anticipés. </p>
                 </div>
                 <div>
-                <a href="{{ route('advance-salary.create') }}" class="btn btn-primary add-list"><i class="fas fa-plus mr-3"></i></i>Create Advance Salary</a>
-                <a href="{{ route('advance-salary.index') }}" class="btn btn-danger add-list"><i class="fa-solid fa-trash mr-3"></i>Clear Search</a>
+                <a href="{{ route('advance-salary.create') }}" class="btn btn-primary add-list"><i class="fas fa-plus mr-3"></i></i>Avance sur salaire</a>
+                <a href="{{ route('advance-salary.index') }}" class="btn btn-danger add-list"><i class="fa-solid fa-trash mr-3"></i>Effacer la recherche</a>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
             <form action="{{ route('advance-salary.index') }}" method="get">
                 <div class="d-flex flex-wrap align-items-center justify-content-between">
                     <div class="form-group row">
-                        <label for="row" class="col-sm-3 align-self-center">Row:</label>
+                        <label for="row" class="col-sm-3 align-self-center">Ligne:</label>
                         <div class="col-sm-9">
                             <select class="form-control" name="row">
                                 <option value="10" @if(request('row') == '10')selected="selected"@endif>10</option>
@@ -44,7 +44,7 @@
                         <label class="control-label col-sm-3 align-self-center" for="chercher">Chercher:</label>
                         <div class="col-sm-8">
                             <div class="input-group">
-                                <input type="text" id="search" class="form-control" name="search" placeholder="Search employee" value="{{ request('search') }}">
+                                <input type="text" id="search" class="form-control" name="search" placeholder="Chercher un employé" value="{{ request('search') }}">
                                 <div class="input-group-append">
                                     <button type="submit" class="input-group-text bg-primary"><i class="fa-solid fa-magnifying-glass font-size-20"></i></button>
                                 </div>
@@ -60,11 +60,11 @@
                 <table class="table mb-0">
                     <thead class="bg-white text-uppercase">
                         <tr class="ligth ligth-data">
-                            <th>Num
+                            <th>Num</th>
                             <th>Photo</th>
-                            <th>@sortablelink('employee.name', 'name')</th>
-                            <th>@sortablelink('date')</th>
-                            <th>@sortablelink('advance_salary', 'advance salary')</th>
+                            <th>@sortablelink('employee.name', 'Nom de l\'employé')</th>
+                            <th>@sortablelink('date', 'Date')</th>
+                            <th>@sortablelink('advance_salary', 'Avance sur salaire')</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -86,7 +86,7 @@
                                         <a class="btn btn-success mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"
                                             href="{{ route('advance-salary.edit', $advance_salary->id) }}""><i class="ri-pencil-line mr-0"></i>
                                         </a>
-                                        <button type="submit" class="btn btn-warning mr-2 border-none" onclick="return confirm('Are you sure you want to delete this record?')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
+                                        <button type="submit" class="btn btn-warning mr-2 border-none" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet enregistrement ?')" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete">
                                             <i class="ri-delete-bin-line mr-0"></i>
                                         </button>
                                     </div>
@@ -96,8 +96,8 @@
 
                         @empty
                         <div class="alert text-white bg-danger" role="alert">
-                            <div class="iq-alert-text">Data not Found.</div>
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <div class="iq-alert-text">Données non trouvées.</div>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Fermer">
                             <i class="ri-close-line"></i>
                             </button>
                         </div>

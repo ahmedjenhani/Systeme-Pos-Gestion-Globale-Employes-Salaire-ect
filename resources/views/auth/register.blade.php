@@ -10,8 +10,8 @@
                         <div class="col-lg-7 align-self-center">
                             <div class="p-3">
 
-                                <h2 class="mb-2">Register</h2>
-                                <p>Create your POSDash account.</p>
+                                <h2 class="mb-2">{{ __('Register') }}</h2>
+                                <p>{{ __('Create your account.') }}</p>
 
                                 <form method="POST" action="{{ route('register') }}">
                                     @csrf
@@ -19,7 +19,7 @@
                                         <div class="col-lg-12">
                                             <div class="floating-label form-group">
                                                 <input class="floating-input form-control @error('name') is-invalid @enderror" type="text" placeholder=" " name="name" autocomplete="off" value="{{ old('name') }}" required>
-                                                <label>Full nom</label>
+                                                <label>{{ __('Full Name') }}</label>
                                             </div>
                                             @error('name')
                                             <div class="mb-4" style="margin-top: -20px">
@@ -31,7 +31,7 @@
                                         <div class="col-lg-12">
                                             <div class="floating-label form-group">
                                                 <input class="floating-input form-control @error('username') is-invalid @enderror" type="text" placeholder=" " name="username" autocomplete="off" value="{{ old('username') }}"  required>
-                                                <label class="mb-1">Usernom</label>
+                                                <label>{{ __('Username') }}</label>
                                             </div>
                                             @error('username')
                                             <div class="mb-4" style="margin-top: -20px">
@@ -43,7 +43,7 @@
                                         <div class="col-lg-12">
                                             <div class="floating-label form-group">
                                                 <input class="floating-input form-control @error('email') is-invalid @enderror" type="email" placeholder=" " name="email" autocomplete="off" value="{{ old('email') }}" required>
-                                                <label>Email</label>
+                                                <label>{{ __('Email') }}</label>
                                             </div>
                                             @error('email')
                                             <div class="mb-4" style="margin-top: -20px">
@@ -55,7 +55,7 @@
                                         <div class="col-lg-6">
                                             <div class="floating-label form-group">
                                                 <input class="floating-input form-control @error('password') is-invalid @enderror" type="password" placeholder=" "  name="password" autocomplete="off" required>
-                                                <label>Password</label>
+                                                <label>{{ __('Password') }}</label>
                                             </div>
                                             @error('password')
                                             <div class="mb-4" style="margin-top: -20px">
@@ -66,13 +66,13 @@
                                         <div class="col-lg-6">
                                             <div class="floating-label form-group">
                                                 <input class="floating-input form-control" type="password" placeholder=" " name="password_confirmation" autocomplete="off" required>
-                                                <label>Confirm Password</label>
+                                                <label>{{ __('Confirm Password') }}</label>
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Register</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('Register') }}</button>
                                     <p class="mt-3">
-                                        Already have an Account? <a href="{{ route('login') }}" class="text-primary">Log In</a>
+                                        {{ __('Already have an Account?') }} <a href="{{ route('login') }}" class="text-primary">{{ __('Log In') }}</a>
                                     </p>
                                 </form>
                             </div>

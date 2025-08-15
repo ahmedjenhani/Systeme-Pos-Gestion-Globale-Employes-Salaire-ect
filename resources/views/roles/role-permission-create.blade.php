@@ -22,7 +22,7 @@
                         <div class=" row align-items-center">
 
                             <div class="form-group col-md-6">
-                                <label for="role_id">Role Name <span class="text-danger">*</span></label>
+                                <label for="role_id">Nom du rôle <span class="text-danger">*</span></label>
                                 <select class="form-control @error('role') is-invalid @enderror" id="role_id" name="role_id" required>
                                     <option selected="" disabled>-- Select Role --</option>
                                     @foreach ($roles as $role)
@@ -39,7 +39,7 @@
 
                         <div class="row align-items-center">
                             <div class="form-group col-md-6">
-                                <label for="name">Permission Name <span class="text-danger">*</span></label>
+                                <label for="name">Nom de la permission <span class="text-danger">*</span></label>
                                 @error('name')
                                 <div class="invalid-feedback">
                                     {{ $message }}
@@ -53,7 +53,7 @@
                             <div class="form-group col-md-3">
                                 <div class="custom-control custom-checkbox custom-control-inline">
                                     <input type="checkbox" class="custom-control-input" id="check-all">
-                                    <label class="custom-control-label" for="check-all">Check All</label>
+                                    <label class="custom-control-label" for="check-all">Tout cocher</label>
                                 </div>
                             </div>
                         </div>
@@ -107,8 +107,8 @@
                         @endforeach
                         <!-- end: Input Data -->
                         <div class="mt-2">
-                            <button type="submit" class="btn btn-primary mr-2">Save</button>
-                            <a class="btn bg-danger" href="{{ route('permission.index') }}">Cancel</a>
+                            <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
+                            <a class="btn bg-danger" href="{{ route('permission.index') }}">Annuler</a>
                         </div>
                     </form>
                 </div>

@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class AttendenceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
         $row = (int) request('row', 10);
@@ -31,9 +29,7 @@ class AttendenceController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    
     public function create()
     {
         return view('attendence.create', [
@@ -41,19 +37,22 @@ class AttendenceController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(Request $request)
     {
         $countEmployee = count($request->employee_id);
         $rules = [
-            'date' => 'required|date_format:Y-m-d|max:10',
+            'date' => 'required|date'
         ];
+
+        
+        for ($i = 1; $i <= $countEmployee; $i++) {
+            $rules["status$i"] = 'required|string';
+        }
 
         $validatedData = $request->validate($rules);
 
-        // Delete if the date is already created (it is just for updating new attendance). If not it will create new attendance
+        
         Attendence::where('date', $validatedData['date'])->delete();
 
         for ($i=1; $i <= $countEmployee; $i++) {
@@ -62,25 +61,21 @@ class AttendenceController extends Controller
 
             $attend->date = $validatedData['date'];
             $attend->employee_id = $request->employee_id[$i];
-            $attend->status = $request->$status;
+            $attend->status = $request->$status ?? 'absent'; 
 
             $attend->save();
         }
 
-        return Redirect::route('attendence.index')->with('success', 'Attendence has been Created!');
+        return Redirect::route('attendence.index')->with('success', 'Acompte de présence créé avec succès!');
     }
 
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(Attendence $attendence)
     {
-        //
+        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function edit(Attendence $attendence)
     {
         return view('attendence.edit', [
@@ -89,19 +84,15 @@ class AttendenceController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(Request $request, Attendence $attendence)
     {
-        //
+        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(Attendence $attendence)
     {
-        //
+        
     }
 }

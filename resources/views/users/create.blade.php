@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Create User</h4>
+                        <h4 class="card-title">Créer un utilisateur</h4>
                     </div>
                 </div>
 
@@ -29,7 +29,7 @@
                             <div class="input-group mb-4 col-lg-6">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input @error('photo') is-invalid @enderror" id="image" name="photo" accept="image/*" onchange="previewImage();">
-                                    <label class="custom-file-label" for="photo">Choose file</label>
+                                    <label class="custom-file-label" for="photo">Choisir un fichier</label>
                                 </div>
                                 @error('photo')
                                 <div class="invalid-feedback">
@@ -51,7 +51,7 @@
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="username">Username <span class="text-danger">*</span></label>
+                                <label for="username">Nom d'utilisateur <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" value="{{ old('username') }}" required>
                                 @error('username')
                                 <div class="invalid-feedback">
@@ -70,7 +70,7 @@
                             </div>
 
                             <div class="form-group col-md-6">
-                                <label for="password">Password <span class="text-danger">*</span></label>
+                                <label for="password">Mot de passe <span class="text-danger">*</span></label>
                                 <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required  autocomplete="off">
                                 @error('password')
                                 <div class="invalid-feedback">
@@ -79,7 +79,7 @@
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="password_confirmation">Confirm Password <span class="text-danger">*</span></label>
+                                <label for="password_confirmation">Confirmer le mot de passe <span class="text-danger">*</span></label>
                                 <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation" name="password_confirmation" required>
                                 @error('password_confirmation')
                                 <div class="invalid-feedback">
@@ -88,9 +88,9 @@
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="role">Role</label>
+                                <label for="role">Rôle <span class="text-danger">*</span></label>
                                 <select class="form-control @error('role') is-invalid @enderror" name="role">
-                                    <option selected="" disabled>-- Select Role --</option>
+                                    <option selected="" disabled>-- Sélectionner un rôle --</option>
                                     @foreach ($roles as $role)
                                         <option value="{{ $role->id }}">{{ $role->name }}</option>
                                     @endforeach
@@ -104,8 +104,8 @@
                         </div>
                         <!-- end: Input Data -->
                         <div class="mt-2">
-                            <button type="submit" class="btn btn-primary mr-2">Save</button>
-                            <a class="btn bg-danger" href="{{ route('users.index') }}">Cancel</a>
+                            <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
+                            <a class="btn bg-danger" href="{{ route('users.index') }}">Annuler</a>
                         </div>
                     </form>
                 </div>

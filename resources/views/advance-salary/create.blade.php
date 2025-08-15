@@ -31,7 +31,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title">Create Advance Salary</h4>
+                        <h4 class="card-title">Créer un salaire anticipé</h4>
                     </div>
                 </div>
 
@@ -41,9 +41,9 @@
                         <!-- begin: Input Data -->
                         <div class=" row align-items-center">
                             <div class="form-group col-md-12">
-                                <label for="employee_id">Employee Name <span class="text-danger">*</span></label>
+                                <label for="employee_id">Nom de l'employé <span class="text-danger">*</span></label>
                                 <select class="form-control mb-3" id="employee_id" name="employee_id" required>
-                                    <option selected="" disabled>-- Select Employee --</option>
+                                    <option selected="" disabled>-- Sélectionner un employé --</option>
                                     @foreach ($employees as $employee)
                                         <option value="{{ $employee->id }}" {{ old('employee_id') == $employee->id ? 'selected' : '' }}>
                                             {{ $employee->name }}
@@ -66,7 +66,7 @@
                                 @enderror
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="advance_salary">Advance Salary</label>
+                                <label for="advance_salary">Salaire Anticipé</label>
                                 <input type="text" class="form-control @error('advance_salary') is-invalid @enderror" id="advance_salary" name="advance_salary" value="{{ old('advance_salary') }}">
                                 @error('advance_salary')
                                 <div class="invalid-feedback">
@@ -77,8 +77,8 @@
                         </div>
                         <!-- end: Input Data -->
                         <div class="mt-2">
-                            <button type="submit" class="btn btn-primary mr-2">Save</button>
-                            <a class="btn bg-danger" href="{{ route('advance-salary.index') }}">Cancel</a>
+                            <button type="submit" class="btn btn-primary mr-2">Enregistrer</button>
+                            <a class="btn bg-danger" href="{{ route('advance-salary.index') }}">Annuler</a>
                         </div>
                     </form>
                 </div>

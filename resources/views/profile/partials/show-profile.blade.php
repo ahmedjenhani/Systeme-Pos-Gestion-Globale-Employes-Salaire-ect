@@ -1,7 +1,7 @@
 @if (session()->has('success'))
 <div class="alert text-white bg-success" role="alert">
     <div class="iq-alert-text">{{ session('success') }}</div>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Fermer">
     <i class="ri-close-line"></i>
     </button>
 </div>
@@ -9,7 +9,7 @@
 
 <div class="card-header d-flex justify-content-between">
     <div class="iq-header-title">
-        <h4 class="card-title">Profile</h4>
+        <h4 class="card-title">Profil</h4>
     </div>
 </div>
 <div class="card-body">
@@ -20,11 +20,11 @@
     </div>
     <div class=" row align-items-center">
         <div class="form-group col-md-12">
-            <label for="fname">Full nom</label>
+            <label for="fname">Nom et prénom</label>
             <input type="text" class="form-control bg-white" id="fname" value="{{  auth()->user()->name }}" readonly>
         </div>
         <div class="form-group col-md-6">
-            <label for="uname">Usernom</label>
+            <label for="uname">Nom d'utilisateur</label>
             <input type="text" class="form-control bg-white" id="uname" value="{{  auth()->user()->username }}" readonly>
         </div>
         <div class="form-group col-md-6">

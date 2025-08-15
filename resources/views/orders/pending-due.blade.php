@@ -7,7 +7,7 @@
             @if (session()->has('success'))
                 <div class="alert text-white bg-success" role="alert">
                     <div class="iq-alert-text">{{ session('success') }}</div>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Fermer">
                     <i class="ri-close-line"></i>
                     </button>
                 </div>
@@ -17,7 +17,7 @@
                     <h4 class="mb-3">List des commandes en attentes</h4>
                 </div>
                 <div>
-                    <a href="{{ route('order.pendingDue') }}" class="btn btn-danger add-list"><i class="fa-solid fa-trash mr-3"></i>Clear Search</a>
+                    <a href="{{ route('order.pendingDue') }}" class="btn btn-danger add-list"><i class="fa-solid fa-trash mr-3"></i>Effacer la recherche</a>
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
             <form action="{{ route('order.pendingDue') }}" method="get">
                 <div class="d-flex flex-wrap align-items-center justify-content-between">
                     <div class="form-group row">
-                        <label for="row" class="col-sm-3 align-self-center">Row:</label>
+                        <label for="row" class="col-sm-3 align-self-center">Ligne:</label>
                         <div class="col-sm-9">
                             <select class="form-control" name="row">
                                 <option value="10" @if(request('row') == '10')selected="selected"@endif>10</option>
@@ -41,7 +41,7 @@
                         <label class="control-label col-sm-3 align-self-center" for="search">Chercher:</label>
                         <div class="col-sm-8">
                             <div class="input-group">
-                                <input type="text" id="search" class="form-control" name="search" placeholder="Search order" value="{{ request('search') }}">
+                                <input type="text" id="search" class="form-control" name="search" placeholder="Chercher une commande" value="{{ request('search') }}">
                                 <div class="input-group-append">
                                     <button type="submit" class="input-group-text bg-primary"><i class="fa-solid fa-magnifying-glass font-size-20"></i></button>
                                 </div>
@@ -57,13 +57,13 @@
                 <table class="table mb-0">
                     <thead class="bg-white text-uppercase">
                         <tr class="ligth ligth-data">
-                            <th>Num
-                            <th>Invoice No</th>
-                            <th>@sortablelink('customer.name', 'name')</th>
-                            <th>@sortablelink('order_date', 'order date')</th>
+                            <th>Num</th>
+                            <th>N° Facture</th>
+                            <th>@sortablelink('customer.name', 'Nom du client')</th>
+                            <th>@sortablelink('order_date', 'Date de commande')</th>
                             <th>Payment</th>
-                            <th>@sortablelink('pay')</th>
-                            <th>@sortablelink('due')</th>
+                            <th>@sortablelink('pay', 'Payé')</th>
+                            <th>@sortablelink('due', 'Dû')</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -90,7 +90,7 @@
                                     <a class="btn btn-info mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Details" href="{{ route('order.orderDetails', $order->id) }}">
                                         Details
                                     </a>
-                                    <button type="button" class="btn btn-primary-dark mr-2" data-toggle="modal" data-target=".bd-example-modal-lg" id="{{ $order->id }}" onclick="payDue(this.id)">Pay Due</button>
+                                    <button type="button" class="btn btn-primary-dark mr-2" data-toggle="modal" data-target=".bd-example-modal-lg" id="{{ $order->id }}" onclick="payDue(this.id)">Payer</button>
                                 </div>
                             </td>
                         </tr>
@@ -114,7 +114,7 @@
                     <h3 class="modal-title text-center mx-auto">Pay Due</h3>
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label for="due">Pay Now</label>
+                            <label for="due">Montant à Payer</label>
                             <input type="text" class="form-control bg-white @error('due') is-invalid @enderror" id="due" name="due">
                             @error('due')
                             <div class="invalid-feedback">
@@ -125,8 +125,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Pay</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                    <button type="submit" class="btn btn-primary">Payer</button>
                 </div>
             </form>
         </div>

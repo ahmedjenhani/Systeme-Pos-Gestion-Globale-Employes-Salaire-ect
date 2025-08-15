@@ -11,9 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class AdvanceSalaryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
     public function index()
     {
         $row = (int) request('row', 10);
@@ -36,9 +34,7 @@ class AdvanceSalaryController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    
     public function create()
     {
         return view('advance-salary.create', [
@@ -46,9 +42,7 @@ class AdvanceSalaryController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(Request $request)
     {
         $rules = [
@@ -58,7 +52,7 @@ class AdvanceSalaryController extends Controller
         ];
 
         if ($request->date) {
-            // format date only shows the year and month
+            
             $getYm = Carbon::createFromFormat('Y-m-d', $request->date)->format('Y-m');
         } else {
             $validatedData = $request->validate($rules);
@@ -73,23 +67,19 @@ class AdvanceSalaryController extends Controller
             $validatedData = $request->validate($rules);
             AdvanceSalary::create($validatedData);
 
-            return Redirect::route('advance-salary.create')->with('success', 'Advance Salary Paid Successfully!');
+            return Redirect::route('advance-salary.create')->with('success', 'Acompte de salaire créé avec succès!');
         } else {
-            return Redirect::route('advance-salary.create')->with('warning', 'Advance Salary Already Paid!');
+            return Redirect::route('advance-salary.create')->with('warning', 'Acompte de salaire déjà payé!');
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(AdvanceSalary $advanceSalary)
     {
-        //
+        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function edit(AdvanceSalary $advanceSalary)
     {
         return view('advance-salary.edit', [
@@ -98,9 +88,7 @@ class AdvanceSalaryController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(Request $request, AdvanceSalary $advanceSalary)
     {
         $rules = [
@@ -109,7 +97,7 @@ class AdvanceSalaryController extends Controller
             'advance_salary' => 'required|numeric'
         ];
 
-        // format date only shows the YM (year and month)
+        
         $newYm = Carbon::createFromFormat('Y-m-d', $request->date)->format('Y-m');
         $oldYm = Carbon::createFromFormat('Y-m-d', $advanceSalary->date)->format('Y-m');
 
@@ -121,19 +109,17 @@ class AdvanceSalaryController extends Controller
             $validatedData = $request->validate($rules);
             AdvanceSalary::where('id', $advanceSalary->id)->update($validatedData);
 
-            return Redirect::route('advance-salary.edit', $advanceSalary->id)->with('success', 'Advance Salary Updated Successfully!');
+            return Redirect::route('advance-salary.edit', $advanceSalary->id)->with('success', 'Acompte de salaire mis à jour avec succès!');
         } else {
-            return Redirect::route('advance-salary.edit', $advanceSalary->id)->with('warning', 'Advance Salary Already Paid!');
+            return Redirect::route('advance-salary.edit', $advanceSalary->id)->with('warning', 'Acompte de salaire déjà payé!');
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(AdvanceSalary $advanceSalary)
     {
         AdvanceSalary::destroy($advanceSalary->id);
 
-        return Redirect::route('advance-salary.index')->with('success', 'Advance Salary has been deleted!');
+        return Redirect::route('advance-salary.index')->with('success', 'Acompte de salaire supprimé avec succès!');
     }
 }
