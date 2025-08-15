@@ -2,7 +2,7 @@
 
 Gestion de point de vente et système de facturation construit avec Laravel 10 et MySQL.
 
-![Dashboard](https://user-images.githubusercontent.com/71541409/234483153-38816efd-c261-4585-bb93-28639508f5e3.jpg)
+
 
 ## 🚀 Fonctionnalités
 - Point de Vente (PDV)
