@@ -77,3 +77,4 @@ Gestion de point de vente et système de facturation construit avec Laravel 10 e
 9. **Connexion**
     Utilisateur : `administrateur` / Mot de passe : `password`
 
+
